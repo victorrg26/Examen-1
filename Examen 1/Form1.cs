@@ -27,7 +27,7 @@ namespace Examen_1
                     string[] encabezados = lineas[0].Split(',');
 
                   
-                    dtv1.Columns.Add("RFC", "RFC");
+                    dtv1.Columns.Add("CURP", "CURP");
                     dtv1.Columns.Add("Promedio", "Promedio");
                     dtv1.Columns.Add("Edad", "Edad");
                     dtv1.Columns.Add("Sexo", "Sexo");
@@ -35,28 +35,28 @@ namespace Examen_1
                  
                     for (int i = 0; i < encabezados.Length; i++)
                     {
-                        if (encabezados[i] != "RFC" && encabezados[i] != "Promedio")
+                        if (encabezados[i] != "CURP" && encabezados[i] != "Promedio")
                         {
                             dtv1.Columns.Add(encabezados[i].Trim(), encabezados[i].Trim());
                         }
                     }
 
                   
-                    for (int i = 1; i < lineas.Length; i++)
+                    for (int i = 0; i < lineas.Length; i++)
                     {
                         string[] valores = lineas[i].Split(',');
 
                       
                         if (valores.Length == encabezados.Length)
                         {
-                            string rfc = valores[0].Trim();
+                            string curp = valores[0].Trim();
                             string promedio = valores[1].Trim();
 
-                            int edad = CalcularEdad(rfc);
-                            string sexo = DeterminarSexo(rfc);
+                            int edad = CalcularEdad(curp);
+                            string sexo = DeterminarSexo(curp);
 
                             string[] fila = new string[dtv1.Columns.Count];
-                            fila[0] = rfc; 
+                            fila[0] = curp; 
                             fila[1] = promedio; 
                             fila[2] = edad.ToString(); 
                             fila[3] = sexo; 
